@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -16,37 +13,38 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float movementAcceleration = 70f;
     [SerializeField] private float maxMoveSpeed = 12f;
     [SerializeField] private float groundLinearDrag = 7f;
-    private float horizontalDirection;
-    private bool changingDirection => (rb.velocity.x > 0f && horizontalDirection < 0f) || (rb.velocity.x < 0f && horizontalDirection > 0f);
+    private float _horizontalDirection;
+    private bool ChangingDirection => (rb.velocity.x > 0f && _horizontalDirection < 0f) || (rb.velocity.x < 0f && _horizontalDirection > 0f);
 
     [Header("Jump Variables")] 
     [SerializeField] private float jumpForce = 12f;
     [SerializeField] private float airLinearDrag = 2.5f;
     [SerializeField] private float fallMultipier = 8f;
     [SerializeField] private float lowJumpFallMultiplier = 5f;
-    [SerializeField] private int extraJumps = 0;
-    private int extraJumpsValue;
-    private bool canJump => Input.GetButtonDown("Jump") && (onGround || extraJumpsValue > 0);
+    [SerializeField] private int extraJumps;
+    private int _extraJumpsValue;
+    private bool CanJump => Input.GetButtonDown("Jump") && (_onGround || _extraJumpsValue > 0);
 
     [Header("Ground Collision Variables")]
     [SerializeField] private float groundRaycastLength;
-    private bool onGround;
+    private bool _onGround;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
     private void Update()
     {
-        horizontalDirection = GetInput().x;
-        if (canJump) Jump();
+        _horizontalDirection = GetInput().x;
+        if (CanJump) Jump();
     }
     private void FixedUpdate()
     {
+        
         CheckCollisions();
         MoveCharacter();
-        if (onGround)
+        if (_onGround)
         {
-            extraJumpsValue = extraJumps;
+            _extraJumpsValue = extraJumps;
             ApplyGroundLinearDrag();
         }
         else
@@ -60,8 +58,8 @@ public class PlayerController : MonoBehaviour
         return new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
     }
     private void MoveCharacter()
-    {
-        rb.AddForce(new Vector2(horizontalDirection, 0f) * movementAcceleration);
+    { 
+        rb.AddForce(new Vector2(_horizontalDirection, 0f) * movementAcceleration);
         if (Mathf.Abs(rb.velocity.x) > maxMoveSpeed)
         {
             rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxMoveSpeed, rb.velocity.y);
@@ -69,7 +67,7 @@ public class PlayerController : MonoBehaviour
     }
     private void ApplyGroundLinearDrag()
     {
-        if (Mathf.Abs(horizontalDirection) < 0.4f || changingDirection)
+        if (Mathf.Abs(_horizontalDirection) < 0.4f || ChangingDirection)
         {
             rb.drag = groundLinearDrag;
         }
@@ -84,9 +82,9 @@ public class PlayerController : MonoBehaviour
     }
     private void Jump()
     {
-        if (!onGround)
+        if (!_onGround)
         {
-            extraJumpsValue--;
+            _extraJumpsValue--;
         }
         
         rb.velocity = new Vector2(rb.velocity.x, 0f);
@@ -109,7 +107,7 @@ public class PlayerController : MonoBehaviour
     }
     private void CheckCollisions()
     {
-        onGround = Physics2D.Raycast(transform.position , Vector2.down, groundRaycastLength, groundLayer);
+        _onGround = Physics2D.Raycast(transform.position , Vector2.down, groundRaycastLength, groundLayer);
     }
     private void OnDrawGizmos()
     {

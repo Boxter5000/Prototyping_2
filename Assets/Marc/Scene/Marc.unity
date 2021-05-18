@@ -594,7 +594,7 @@ MonoBehaviour:
   groundLinearDrag: 12
   jumpForce: 20
   airLinearDrag: 5
-  fallMultipier: 12
+  fallMultipier: 5
   lowJumpFallMultiplier: 5
   extraJumps: 1
   groundRaycastLength: 0.73
