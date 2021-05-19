@@ -10,9 +10,10 @@ public class PlayerController : MonoBehaviour
     [Header("Components")] 
     [SerializeField] private Rigidbody2D rb;
     private WallJump _wallJump;
+    private SlopeSlide _slopeSlide;
 
     [Header("Layer Masks")]
-    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] public LayerMask groundLayer;
     
     [Header("Movement Variables")]
     [SerializeField] private float movementAcceleration = 70f;
@@ -33,11 +34,12 @@ public class PlayerController : MonoBehaviour
     private bool canJump => Input.GetButtonDown("Jump") && (onGround || extraJumpsValue > 0);
     [Header("Ground Collision Variables")]
     [SerializeField] private float groundRaycastLength;
-    private bool onGround;
+    public bool onGround;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         _wallJump = GetComponent<WallJump>();
+        _slopeSlide = GetComponent<SlopeSlide>();
     }
     private void Update()
     {
@@ -66,6 +68,7 @@ public class PlayerController : MonoBehaviour
     private void MoveCharacter()
     {
         rb.AddForce(new Vector2(_horizontalDirection, 0f) * movementAcceleration);
+            
         if (Mathf.Abs(rb.velocity.x) > maxMoveSpeed)
         {
             rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxMoveSpeed, rb.velocity.y);

@@ -14,7 +14,7 @@ TagManager:
   - Player
   - Ground
   - Wall
-  - 
+  - Death
   - 
   - 
   - 
@@ -41,9 +41,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background_2
+    uniqueID: 262971947
+    locked: 0
+  - name: Background_1
+    uniqueID: 1348372543
+    locked: 0
   - name: Player
     uniqueID: 2706977717
     locked: 0
   - name: PlayGround
     uniqueID: 1990976359
+    locked: 0
+  - name: Forground_1
+    uniqueID: 11076523
+    locked: 0
+  - name: Forground_2
+    uniqueID: 3894566509
     locked: 0
