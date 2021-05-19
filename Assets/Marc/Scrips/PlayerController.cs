@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Components")] 
     [SerializeField] private Rigidbody2D rb;
+    private WallJump _wallJump;
 
     [Header("Layer Masks")]
     [SerializeField] private LayerMask groundLayer;
@@ -18,6 +20,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float groundLinearDrag = 7f;
     private float horizontalDirection;
     private bool changingDirection => (rb.velocity.x > 0f && horizontalDirection < 0f) || (rb.velocity.x < 0f && horizontalDirection > 0f);
+    [HideInInspector] public float _horizontalDirection;
+    private bool ChangingDirection => (rb.velocity.x > 0f && _horizontalDirection < 0f) || (rb.velocity.x < 0f && _horizontalDirection > 0f);
 
     [Header("Jump Variables")] 
     [SerializeField] private float jumpForce = 12f;
@@ -34,10 +38,11 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        _wallJump = GetComponent<WallJump>();
     }
     private void Update()
     {
-        horizontalDirection = GetInput().x;
+        _horizontalDirection = GetInput().x;
         if (canJump) Jump();
     }
     private void FixedUpdate()
@@ -49,10 +54,10 @@ public class PlayerController : MonoBehaviour
             extraJumpsValue = extraJumps;
             ApplyGroundLinearDrag();
         }
-        else
+        else if(!onGround && !_wallJump.isTuchingWall)
         {
             ApplyAirLinearDrag();
-            FallMultiplier();
+            FallMultiplier(fallMultipier);
         }
     }
     private Vector2 GetInput()
@@ -61,7 +66,7 @@ public class PlayerController : MonoBehaviour
     }
     private void MoveCharacter()
     {
-        rb.AddForce(new Vector2(horizontalDirection, 0f) * movementAcceleration);
+        rb.AddForce(new Vector2(_horizontalDirection, 0f) * movementAcceleration);
         if (Mathf.Abs(rb.velocity.x) > maxMoveSpeed)
         {
             rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxMoveSpeed, rb.velocity.y);
@@ -69,7 +74,7 @@ public class PlayerController : MonoBehaviour
     }
     private void ApplyGroundLinearDrag()
     {
-        if (Mathf.Abs(horizontalDirection) < 0.4f || changingDirection)
+        if (Mathf.Abs(_horizontalDirection) < 0.4f || changingDirection)
         {
             rb.drag = groundLinearDrag;
         }
@@ -84,19 +89,22 @@ public class PlayerController : MonoBehaviour
     }
     private void Jump()
     {
-        if (!onGround)
+        if (!_wallJump.isTuchingWall)
         {
-            extraJumpsValue--;
+            if (!onGround)
+            {
+                extraJumpsValue--;
+            }
+            
+            rb.velocity = new Vector2(rb.velocity.x, 0f);
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
-        
-        rb.velocity = new Vector2(rb.velocity.x, 0f);
-        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
-    private void FallMultiplier()
+    public void FallMultiplier(float downForce)
     {
         if (rb.velocity.y < 0)
         {
-            rb.gravityScale = fallMultipier;
+            rb.gravityScale = downForce;
         }
         else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
         {
