@@ -15,6 +15,7 @@
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/PlayerController.cs" />
       <option value="$PROJECT_DIR$/Assets/Kevin/scripts/PlayerController.cs" />
       <option value="$PROJECT_DIR$/Assets/Kevin/scripts/SlopeSlide.cs" />
+      <option value="$PROJECT_DIR$/Assets/Paralax.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1sfVHgoBauA1D8mc0TwnQ8SC1DI" />
@@ -66,6 +67,7 @@
       <updated>1621263579812</updated>
       <workItem from="1621263622775" duration="12613000" />
       <workItem from="1621341629129" duration="3361000" />
+      <workItem from="1621466712328" duration="1291000" />
     </task>
     <servers />
   </component>
