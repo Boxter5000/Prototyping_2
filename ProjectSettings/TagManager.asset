@@ -38,12 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: bg
-    uniqueID: 510526577
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: fg
-    uniqueID: 3056369111
+  - name: Player
+    uniqueID: 2706977717
+    locked: 0
+  - name: PlayGround
+    uniqueID: 1990976359
     locked: 0

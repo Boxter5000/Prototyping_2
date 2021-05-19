@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int extraJumps = 0;
     private int extraJumpsValue;
     private bool canJump => Input.GetButtonDown("Jump") && (onGround || extraJumpsValue > 0);
-
     [Header("Ground Collision Variables")]
     [SerializeField] private float groundRaycastLength;
     private bool onGround;
