@@ -1,10 +1,15 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Components")] 
     [SerializeField] private Rigidbody2D rb;
+    private WallJump _wallJump;
 
     [Header("Layer Masks")]
     [SerializeField] private LayerMask groundLayer;
@@ -13,7 +18,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float movementAcceleration = 70f;
     [SerializeField] private float maxMoveSpeed = 12f;
     [SerializeField] private float groundLinearDrag = 7f;
-    private float _horizontalDirection;
+    private float horizontalDirection;
+    private bool changingDirection => (rb.velocity.x > 0f && horizontalDirection < 0f) || (rb.velocity.x < 0f && horizontalDirection > 0f);
+    [HideInInspector] public float _horizontalDirection;
     private bool ChangingDirection => (rb.velocity.x > 0f && _horizontalDirection < 0f) || (rb.velocity.x < 0f && _horizontalDirection > 0f);
 
     [Header("Jump Variables")] 
@@ -21,36 +28,36 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float airLinearDrag = 2.5f;
     [SerializeField] private float fallMultipier = 8f;
     [SerializeField] private float lowJumpFallMultiplier = 5f;
-    [SerializeField] private int extraJumps;
-    private int _extraJumpsValue;
-    private bool CanJump => Input.GetButtonDown("Jump") && (_onGround || _extraJumpsValue > 0);
+    [SerializeField] private int extraJumps = 0;
+    private int extraJumpsValue;
+    private bool canJump => Input.GetButtonDown("Jump") && (onGround || extraJumpsValue > 0);
 
     [Header("Ground Collision Variables")]
     [SerializeField] private float groundRaycastLength;
-    private bool _onGround;
+    private bool onGround;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        _wallJump = GetComponent<WallJump>();
     }
     private void Update()
     {
         _horizontalDirection = GetInput().x;
-        if (CanJump) Jump();
+        if (canJump) Jump();
     }
     private void FixedUpdate()
     {
-        
         CheckCollisions();
         MoveCharacter();
-        if (_onGround)
+        if (onGround)
         {
-            _extraJumpsValue = extraJumps;
+            extraJumpsValue = extraJumps;
             ApplyGroundLinearDrag();
         }
-        else
+        else if(!onGround && !_wallJump.isTuchingWall)
         {
             ApplyAirLinearDrag();
-            FallMultiplier();
+            FallMultiplier(fallMultipier);
         }
     }
     private Vector2 GetInput()
@@ -58,7 +65,7 @@ public class PlayerController : MonoBehaviour
         return new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
     }
     private void MoveCharacter()
-    { 
+    {
         rb.AddForce(new Vector2(_horizontalDirection, 0f) * movementAcceleration);
         if (Mathf.Abs(rb.velocity.x) > maxMoveSpeed)
         {
@@ -67,7 +74,7 @@ public class PlayerController : MonoBehaviour
     }
     private void ApplyGroundLinearDrag()
     {
-        if (Mathf.Abs(_horizontalDirection) < 0.4f || ChangingDirection)
+        if (Mathf.Abs(_horizontalDirection) < 0.4f || changingDirection)
         {
             rb.drag = groundLinearDrag;
         }
@@ -82,19 +89,22 @@ public class PlayerController : MonoBehaviour
     }
     private void Jump()
     {
-        if (!_onGround)
+        if (!_wallJump.isTuchingWall)
         {
-            _extraJumpsValue--;
+            if (!onGround)
+            {
+                extraJumpsValue--;
+            }
+            
+            rb.velocity = new Vector2(rb.velocity.x, 0f);
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
-        
-        rb.velocity = new Vector2(rb.velocity.x, 0f);
-        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
-    private void FallMultiplier()
+    public void FallMultiplier(float downForce)
     {
         if (rb.velocity.y < 0)
         {
-            rb.gravityScale = fallMultipier;
+            rb.gravityScale = downForce;
         }
         else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
         {
@@ -107,7 +117,7 @@ public class PlayerController : MonoBehaviour
     }
     private void CheckCollisions()
     {
-        _onGround = Physics2D.Raycast(transform.position , Vector2.down, groundRaycastLength, groundLayer);
+        onGround = Physics2D.Raycast(transform.position , Vector2.down, groundRaycastLength, groundLayer);
     }
     private void OnDrawGizmos()
     {
