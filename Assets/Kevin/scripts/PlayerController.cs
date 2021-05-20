@@ -31,7 +31,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float lowJumpFallMultiplier = 5f;
     [SerializeField] private int extraJumps = 0;
     private int extraJumpsValue;
-    private bool canJump => Input.GetButtonDown("Jump") && (onGround || extraJumpsValue > 0);
+    private bool isJumping;
+    private bool canJump => Input.GetButtonDown("Jump") && (onGround || extraJumpsValue > 0) && !isJumping;
     [Header("Ground Collision Variables")]
     [SerializeField] private float groundRaycastLength;
     public bool onGround;
@@ -67,8 +68,22 @@ public class PlayerController : MonoBehaviour
     }
     private void MoveCharacter()
     {
-        rb.AddForce(new Vector2(_horizontalDirection, 0f) * movementAcceleration);
+        //rb.AddForce(new Vector2(_horizontalDirection, 0f) * movementAcceleration);
             
+        
+        if (onGround && !_slopeSlide.isOnSlope && !isJumping)
+        {
+            rb.AddForce(new Vector2(_horizontalDirection, 0.0f) * movementAcceleration);
+        }
+        else if (onGround && _slopeSlide.isOnSlope && !isJumping)
+        {
+            rb.AddForce(new Vector2(_slopeSlide.slopeNormalPerp.x * -_horizontalDirection, _slopeSlide.slopeNormalPerp.x * -_horizontalDirection) * movementAcceleration);
+        }
+        else if (!onGround)
+        {
+            rb.AddForce(new Vector2(_horizontalDirection, 0.0f) * movementAcceleration);
+        }
+
         if (Mathf.Abs(rb.velocity.x) > maxMoveSpeed)
         {
             rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxMoveSpeed, rb.velocity.y);
@@ -91,6 +106,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Jump()
     {
+        isJumping = true;
         if (!_wallJump.isTuchingWall)
         {
             if (!onGround)
@@ -120,6 +136,11 @@ public class PlayerController : MonoBehaviour
     private void CheckCollisions()
     {
         onGround = Physics2D.Raycast(transform.position , Vector2.down, groundRaycastLength, groundLayer);
+
+        if (rb.velocity.y <= 0.0f)
+        {
+            isJumping = false;
+        }
     }
     private void OnDrawGizmos()
     {
