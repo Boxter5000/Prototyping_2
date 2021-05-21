@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     private WallJump _wallJump;
     private SlopeSlide _slopeSlide;
+    private Dash _dash;
 
     [Header("Layer Masks")]
     [SerializeField] public LayerMask groundLayer;
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         _wallJump = GetComponent<WallJump>();
         _slopeSlide = GetComponent<SlopeSlide>();
+        _dash = GetComponent<Dash>();
     }
     private void Update()
     {
@@ -91,7 +93,7 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(new Vector2(_horizontalDirection, 0.0f) * movementAcceleration);
         }
 
-        if (Mathf.Abs(rb.velocity.x) > maxMoveSpeed)
+        if (Mathf.Abs(rb.velocity.x) > maxMoveSpeed && !_dash.isDashing)
         {
             rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxMoveSpeed, rb.velocity.y);
         }

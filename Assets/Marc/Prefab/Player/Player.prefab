@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5410543338961587371}
   - component: {fileID: 5410543338961587366}
   - component: {fileID: 5410543338961587367}
+  - component: {fileID: 3606384264019764152}
   - component: {fileID: 5410543338961587370}
   - component: {fileID: 5410543338961587373}
   m_Layer: 0
@@ -154,6 +155,20 @@ MonoBehaviour:
   maxSlopeAngle: 90
   noFriction: {fileID: 6200000, guid: ccef07347fe02de47805c3e2d913aa7d, type: 2}
   fullFriction: {fileID: 6200000, guid: a913cc52d5e407e49a5cfabc40a2dc84, type: 2}
+--- !u!114 &3606384264019764152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5410543338961587372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be3850fbf0afc894b8fd32574b348d87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashSpeed: 1000
+  startDashTime: 0.1
 --- !u!50 &5410543338961587370
 Rigidbody2D:
   serializedVersion: 4

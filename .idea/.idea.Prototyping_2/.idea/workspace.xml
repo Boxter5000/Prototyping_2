@@ -10,12 +10,16 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Marc/Scrips/Dash.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/PlayerController.cs" />
       <option value="$PROJECT_DIR$/Assets/Kevin/scripts/SlopeSlide.cs" />
       <option value="$PROJECT_DIR$/Assets/Paralax.cs" />
       <option value="$PROJECT_DIR$/Assets/Kevin/scripts/PlayerController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Dash.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1sfVHgoBauA1D8mc0TwnQ8SC1DI" />
@@ -77,7 +81,7 @@
       <workItem from="1621341629129" duration="3361000" />
       <workItem from="1621466712328" duration="1596000" />
       <workItem from="1621522475303" duration="3992000" />
-      <workItem from="1621591199232" duration="1097000" />
+      <workItem from="1621591199232" duration="2747000" />
     </task>
     <servers />
   </component>
