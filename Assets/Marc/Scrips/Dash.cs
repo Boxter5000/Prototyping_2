@@ -11,10 +11,13 @@ public class Dash : MonoBehaviour
     [SerializeField]private float startDashTime;
     private int direction;
     public bool isDashing;
+    private bool canDash;
+    private PlayerController _playerController;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        _playerController = GetComponent<PlayerController>();
         dashTime = startDashTime;
     }
 
@@ -39,10 +42,11 @@ public class Dash : MonoBehaviour
             {
                 direction = 0;
                 isDashing = false;
+                canDash = false;
                 dashTime = startDashTime;
                 rb.velocity = Vector2.zero;
             }
-            else
+            else if(canDash)
             {
                 dashTime -= Time.deltaTime;
 
@@ -55,6 +59,11 @@ public class Dash : MonoBehaviour
                     rb.velocity = Vector2.right * dashSpeed;
                 }
             }
+        }
+
+        if (_playerController.onGround)
+        {
+            canDash = true;
         }
     }
 }

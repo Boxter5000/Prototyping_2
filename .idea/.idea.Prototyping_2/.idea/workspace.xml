@@ -11,6 +11,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Marc/Scrips/Death.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Marc/Scrips/Dash.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -19,6 +20,7 @@
       <option value="$PROJECT_DIR$/Assets/Kevin/scripts/SlopeSlide.cs" />
       <option value="$PROJECT_DIR$/Assets/Paralax.cs" />
       <option value="$PROJECT_DIR$/Assets/Kevin/scripts/PlayerController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Death.cs" />
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Dash.cs" />
     </changedPaths>
   </component>
@@ -81,7 +83,7 @@
       <workItem from="1621341629129" duration="3361000" />
       <workItem from="1621466712328" duration="1596000" />
       <workItem from="1621522475303" duration="3992000" />
-      <workItem from="1621591199232" duration="2747000" />
+      <workItem from="1621591199232" duration="10204000" />
     </task>
     <servers />
   </component>
