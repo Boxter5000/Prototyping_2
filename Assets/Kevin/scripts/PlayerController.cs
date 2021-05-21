@@ -36,6 +36,9 @@ public class PlayerController : MonoBehaviour
     [Header("Ground Collision Variables")]
     [SerializeField] private float groundRaycastLength;
     public bool onGround;
+
+    private Vector2 NewForce;
+    private Vector2 Debugforce;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -77,7 +80,11 @@ public class PlayerController : MonoBehaviour
         }
         else if (onGround && _slopeSlide.isOnSlope && !isJumping)
         {
-            rb.AddForce(new Vector2(_slopeSlide.slopeNormalPerp.x * -_horizontalDirection, _slopeSlide.slopeNormalPerp.x * -_horizontalDirection) * movementAcceleration);
+            NewForce = new Vector2( maxMoveSpeed * _slopeSlide.slopeNormalPerp.x * -_horizontalDirection,maxMoveSpeed * _slopeSlide.slopeNormalPerp.y * -_horizontalDirection);
+            rb.velocity = NewForce;
+            
+            Debugforce = new Vector2(_slopeSlide.slopeNormalPerp.x * -_horizontalDirection, _slopeSlide.slopeNormalPerp.x * -_horizontalDirection) * movementAcceleration;
+            
         }
         else if (!onGround)
         {
@@ -115,7 +122,15 @@ public class PlayerController : MonoBehaviour
             }
             
             rb.velocity = new Vector2(rb.velocity.x, 0f);
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+            if (Mathf.Abs(_horizontalDirection) <= 0.0f)
+            {
+                rb.AddForce(Vector2.up * (maxMoveSpeed * jumpForce / 4) , ForceMode2D.Impulse);
+            }
+            else
+            {
+                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            }
         }
     }
     public void FallMultiplier(float downForce)
@@ -147,5 +162,7 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.green;
         Vector3 pos = transform.position;
         Gizmos.DrawLine(pos, pos + Vector3.down * groundRaycastLength);
+        
+        Gizmos.DrawLine(pos, pos + (Vector3)Debugforce);
     }
 }
