@@ -1,9 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private WallJump _wallJump;
     private SlopeSlide _slopeSlide;
     private Dash _dash;
+    private Death _death;
 
     [Header("Layer Masks")]
     [SerializeField] public LayerMask groundLayer;
@@ -46,6 +42,7 @@ public class PlayerController : MonoBehaviour
         _wallJump = GetComponent<WallJump>();
         _slopeSlide = GetComponent<SlopeSlide>();
         _dash = GetComponent<Dash>();
+        _death = GetComponent<Death>();
     }
     private void Update()
     {
@@ -137,17 +134,20 @@ public class PlayerController : MonoBehaviour
     }
     public void FallMultiplier(float downForce)
     {
-        if (rb.velocity.y < 0)
+        if (!_death.hasDied)
         {
-            rb.gravityScale = downForce;
-        }
-        else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
-        {
-            rb.gravityScale = lowJumpFallMultiplier;
-        }
-        else
-        {
-            rb.gravityScale = 1f;
+            if (rb.velocity.y < 0)
+            {
+                rb.gravityScale = downForce;
+            }
+            else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+            {
+                rb.gravityScale = lowJumpFallMultiplier;
+            }
+            else
+            {
+                rb.gravityScale = 1f;
+            }
         }
     }
     private void CheckCollisions()

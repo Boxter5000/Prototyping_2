@@ -17,11 +17,12 @@
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/PlayerController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Kevin/scripts/SlopeSlide.cs" />
       <option value="$PROJECT_DIR$/Assets/Paralax.cs" />
-      <option value="$PROJECT_DIR$/Assets/Kevin/scripts/PlayerController.cs" />
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Death.cs" />
+      <option value="$PROJECT_DIR$/Assets/Kevin/scripts/WallJump.cs" />
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Dash.cs" />
+      <option value="$PROJECT_DIR$/Assets/Kevin/scripts/PlayerController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Kevin/scripts/SlopeSlide.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1sfVHgoBauA1D8mc0TwnQ8SC1DI" />
@@ -83,7 +84,9 @@
       <workItem from="1621341629129" duration="3361000" />
       <workItem from="1621466712328" duration="1596000" />
       <workItem from="1621522475303" duration="3992000" />
-      <workItem from="1621591199232" duration="10204000" />
+      <workItem from="1621591199232" duration="11000000" />
+      <workItem from="1621770003812" duration="3107000" />
+      <workItem from="1621849626093" duration="2977000" />
     </task>
     <servers />
   </component>
