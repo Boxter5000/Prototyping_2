@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         _horizontalDirection = GetInput().x;
+        FlipCharacter();
         if (canJump) Jump();
     }
     private void FixedUpdate()
@@ -165,6 +166,18 @@ public class PlayerController : MonoBehaviour
             isJumping = false;
         }
     }
+
+    private void FlipCharacter()
+    {
+        if (horizontalDirection > 0f)
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0); // Normal
+        }
+        else if (horizontalDirection < 0f)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
+        }
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
@@ -172,5 +185,20 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawLine(pos, pos + Vector3.down * groundRaycastLength);
         
         Gizmos.DrawLine(pos, pos + (Vector3)Debugforce);
+    }
+
+    public void SetWalljumpActive()
+    {
+        canWalljump = true;
+    }
+
+    public void SetDoubleJumpActive()
+    {
+        extraJumps = 1;
+    }
+
+    public void SetDashActive()
+    {
+        canDash = true;
     }
 }
