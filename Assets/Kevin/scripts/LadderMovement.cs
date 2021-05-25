@@ -5,23 +5,19 @@ using UnityEngine;
 public class LadderMovement : MonoBehaviour
 {
     private float vertical;
-    private float speed = 8;
+    private float speed = 5;
     private bool isLadder;
     private bool isClimbing;
     [SerializeField] private Rigidbody2D rb;
 
     void Update()
     {
-        vertical = Input.GetAxis("Vertical");
+        vertical = Input.GetAxisRaw("Vertical");
+ 
         if (isLadder && Mathf.Abs(vertical) >0f)
         {
             isClimbing = true;
-            rb.velocity = new Vector2(rb.position.x, vertical * speed);
-        }
-
-        else
-        {
-            rb.gravityScale = 1f;
+            rb.velocity = new Vector2(0.0f, vertical * speed);
         }
     }
 
