@@ -4,10 +4,15 @@ using Debug = UnityEngine.Debug;
 
 public class Death : MonoBehaviour
 {
+    [Header("Tags")]
     [SerializeField] private string deathOnTuch;
     [SerializeField] private string respawnTag;
     [SerializeField] private string respawnChild;
-    [SerializeField] private float transitionSpeed = 0f;
+    
+    [Header("speed")]
+    [SerializeField] [Range(0.0f, 0.9f)] private float transitionSpeed = 0f;
+    
+    [Header("Effeckts")]
     [SerializeField] private GameObject deathParicle;
     [SerializeField] private GameObject spriteChild;
     
@@ -41,9 +46,10 @@ public class Death : MonoBehaviour
 
             playerClone = Instantiate(spriteChild, lastCheckpoint, quaternion.identity);
             
+            hasDied = true;
+            rb.velocity = Vector2.zero;
             cc.isTrigger = true;
             rb.isKinematic = true;
-            hasDied = true;
             deathParicle.SetActive(true);
             spriteChild.SetActive(false);
             
@@ -60,7 +66,6 @@ public class Death : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Debug.Log(hasDied);
         if (hasDied)
         {
             deathPos = transform.position;

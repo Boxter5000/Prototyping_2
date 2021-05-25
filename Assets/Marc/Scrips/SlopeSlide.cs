@@ -9,14 +9,14 @@ public class SlopeSlide : MonoBehaviour
     private float slopeDownAngle;
     private float slopeDownAngleOld;
 
-    [HideInInspector]public bool isOnSlope;
+    [HideInInspector] public bool isOnSlope;
     private bool canWalkOnSlope;
 
-    public Vector2 slopeNormalPerp;
+    [HideInInspector] public Vector2 slopeNormalPerp;
     private Vector2 colliderSize;
+    private float slopeSideAngle;
 
     [SerializeField] private float slopeCheckDistance;
-    [SerializeField] private float slopeSideAngle;
     [SerializeField] private float maxSlopeAngle;
     [SerializeField] private PhysicsMaterial2D noFriction;
     [SerializeField] private PhysicsMaterial2D fullFriction;

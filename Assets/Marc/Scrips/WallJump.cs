@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class WallJump : MonoBehaviour
 {
-    [Header("Components")] 
-    [SerializeField] private Rigidbody2D rb;
+    private Rigidbody2D rb;
     private PlayerController _playerController;
 
     [Header("Layer Masks")]
@@ -17,7 +16,7 @@ public class WallJump : MonoBehaviour
     
     [Header("Ground Collision Variables")]
     [SerializeField] private float wallRaycastLength;
-    public bool isTuchingWall;
+    [HideInInspector] public bool isTuchingWall;
 
     private void Awake()
     {
@@ -27,8 +26,11 @@ public class WallJump : MonoBehaviour
 
     private void Update()
     {
-        if (CanWallJump) Jump();
-        if (isTuchingWall) _playerController.FallMultiplier(slideSpeed);
+        if (_playerController.canWalljump)
+        {
+            if (CanWallJump) Jump();
+            if (isTuchingWall) _playerController.FallMultiplier(slideSpeed);
+        }
     }
 
     private void FixedUpdate()
