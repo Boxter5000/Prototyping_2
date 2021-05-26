@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -25,6 +22,7 @@ public class Interacteble : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            transform.Find("InteractParticle").gameObject.SetActive(true);
             inRange = true;
         }
     }
@@ -33,6 +31,7 @@ public class Interacteble : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            transform.Find("InteractParticle").gameObject.SetActive(false);
             inRange = false;
         }
     }

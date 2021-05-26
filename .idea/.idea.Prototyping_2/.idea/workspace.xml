@@ -25,8 +25,8 @@
       <option value="$PROJECT_DIR$/Assets/levelEnd.cs" />
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/levelEnd.cs" />
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Player/WallJump.cs" />
-      <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Interacting/Interacteble.cs" />
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Player/PlayerController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Interacting/Interacteble.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1sfVHgoBauA1D8mc0TwnQ8SC1DI" />
@@ -92,6 +92,7 @@
       <workItem from="1621770003812" duration="3107000" />
       <workItem from="1621849626093" duration="2977000" />
       <workItem from="1621947266511" duration="8856000" />
+      <workItem from="1622036884615" duration="676000" />
     </task>
     <servers />
   </component>
