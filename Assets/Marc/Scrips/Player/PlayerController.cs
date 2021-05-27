@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 NewForce;
     private Vector2 Debugforce;
+
+    public static PlayerController instance;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -49,6 +51,14 @@ public class PlayerController : MonoBehaviour
         _slopeSlide = GetComponent<SlopeSlide>();
         _dash = GetComponent<Dash>();
         _death = GetComponent<Death>();
+
+        if (instance != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        
+        GameObject.DontDestroyOnLoad(this.gameObject);
     }
     private void Update()
     {
