@@ -22,6 +22,7 @@ public class Paralax : MonoBehaviour
 
     public void Start()
     {
+        player = GameObject.FindWithTag("Player").transform;
         startPos = transform.position;
         startZ = transform.position.z;
     }

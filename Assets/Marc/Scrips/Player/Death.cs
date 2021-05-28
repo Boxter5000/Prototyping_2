@@ -15,6 +15,7 @@ public class Death : MonoBehaviour
     [Header("Effeckts")]
     [SerializeField] private GameObject deathParicle;
     [SerializeField] private GameObject spriteChild;
+    [SerializeField] private Transform spawnpoint;
     
     [HideInInspector] public bool hasDied;
 
@@ -24,11 +25,12 @@ public class Death : MonoBehaviour
     GameObject playerClone;
 
     private CapsuleCollider2D cc;
-    private Rigidbody2D rb;
+    [SerializeField] private Rigidbody2D rb;
     private SpriteRenderer _spriteRenderer;
 
     private void Awake()
     {
+        transform.position = spawnpoint.position;
         cc = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
     }

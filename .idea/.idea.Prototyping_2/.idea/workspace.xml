@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="f1b9faad-4e95-458e-bbe8-1157bad0fb1b" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -10,8 +13,17 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/cameraFindPlayer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Marc/Sprites/UI/Pause.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Marc/Scrips/SpawnPointSet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Marc/Scrips/Interacting/Interacteble.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -27,8 +39,14 @@
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/levelEnd.cs" />
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Player/WallJump.cs" />
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Interacting/Interacteble.cs" />
-      <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Player/PlayerController.cs" />
       <option value="$PROJECT_DIR$/Assets/cameraFindPlayer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Marc/Sprites/UI/Pause.cs" />
+      <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Player/Death.cs" />
+      <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Player/PlayerController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Marc/Scrips/SpawnPointSet.cs" />
+      <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Enviroment/Paralax.cs" />
+      <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Player/Dash.cs" />
+      <option value="$PROJECT_DIR$/Assets/Marc/Scrips/cameraFindPlayer.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1sfVHgoBauA1D8mc0TwnQ8SC1DI" />
@@ -95,7 +113,8 @@
       <workItem from="1621849626093" duration="2977000" />
       <workItem from="1621947266511" duration="8856000" />
       <workItem from="1622036884615" duration="1272000" />
-      <workItem from="1622118207114" duration="2903000" />
+      <workItem from="1622118207114" duration="7351000" />
+      <workItem from="1622203449590" duration="8316000" />
     </task>
     <servers />
   </component>

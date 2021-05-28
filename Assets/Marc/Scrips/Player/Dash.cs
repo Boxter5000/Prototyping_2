@@ -60,6 +60,10 @@ public class Dash : MonoBehaviour
                     else if (direction == 2)
                     {
                         rb.velocity = Vector2.right * dashSpeed;
+                        if (Mathf.Abs(rb.velocity.x) > dashSpeed)
+                        {
+                            rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * dashSpeed, rb.velocity.y);
+                        }
                     }
                 }
             }

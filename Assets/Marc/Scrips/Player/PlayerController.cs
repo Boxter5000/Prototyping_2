@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private SlopeSlide _slopeSlide;
     private Dash _dash;
     private Death _death;
+    public Animator animator;
 
     [Header("Layer Masks")]
     [SerializeField] public LayerMask groundLayer;
@@ -39,6 +40,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int extraJumps = 0;
     [SerializeField] public bool canWalljump;
     [SerializeField] public bool canDash;
+    
+    bool isLeft;
+    bool isRight;
+    Vector3 X;
 
     private Vector2 NewForce;
     private Vector2 Debugforce;
@@ -46,25 +51,45 @@ public class PlayerController : MonoBehaviour
     public static PlayerController instance;
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        _wallJump = GetComponent<WallJump>();
-        _slopeSlide = GetComponent<SlopeSlide>();
-        _dash = GetComponent<Dash>();
-        _death = GetComponent<Death>();
-
         if (instance != null)
         {
             Destroy(this.gameObject);
             return;
         }
-        
+
+        instance = this;
         GameObject.DontDestroyOnLoad(this.gameObject);
+        
+        rb = GetComponent<Rigidbody2D>();
+        _wallJump = GetComponent<WallJump>();
+        _slopeSlide = GetComponent<SlopeSlide>();
+        _dash = GetComponent<Dash>();
+        _death = GetComponent<Death>();
+        
+        
+        X = transform.localScale;
+        isRight = true;
     }
     private void Update()
     {
         _horizontalDirection = GetInput().x;
         FlipCharacter();
         if (canJump) Jump();
+        
+        if(!isLeft && (Input.GetKeyDown (KeyCode.A)||Input.GetKeyDown (KeyCode.LeftArrow))){
+            isRight=false;
+            isLeft=true;
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+
+        if (!isRight &&(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)))
+        {
+            isRight = true;
+            isLeft = false;
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+
+        animator.SetFloat("Speed", Mathf.Abs(_horizontalDirection));
     }
     private void FixedUpdate()
     {
