@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 378716511}
   - component: {fileID: 378716512}
+  - component: {fileID: 1948900540}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -50,7 +51,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -71,17 +72,36 @@ SpriteRenderer:
   m_SortingLayerID: -1587989579
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 236a8b6f8e334d547a8d00294d108803, type: 3}
+  m_Sprite: {fileID: 21300000, guid: afb4350169318e141a5dc4f748dbd663, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.0984615, y: 1.5938462}
+  m_Size: {x: 1.18125, y: 1.95625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1948900540
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378716510}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dbbaa838f3e3a9c4b84d330157acd23a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1182043725
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,8 +1463,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 0
-    mode: 0
+    enabled: 1
+    mode: 1
     timeMode: 0
     fps: 30
     frameOverTime:
@@ -1562,7 +1582,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 0}
+    - sprite: {fileID: 21300000, guid: 459d3604f31db3d4cb53893fd842012f, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -4840,7 +4860,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4886,6 +4906,78 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1 &1619171872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1619171874}
+  - component: {fileID: 1619171873}
+  m_Layer: 0
+  m_Name: Point Light 2D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1619171874
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619171872}
+  m_LocalRotation: {x: -0, y: -0, z: -0.06454396, w: 0.9979149}
+  m_LocalPosition: {x: 0, y: 0.13999999, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5410543338961587369}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1619171873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619171872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 3
+  m_BlendStyleIndex: 2
+  m_FalloffIntensity: 0.616
+  m_Color: {r: 0.18623175, g: 0.4245283, b: 0.41692308, a: 1}
+  m_Intensity: 0.3
+  m_LightVolumeOpacity: 0.326
+  m_ApplyToSortingLayers: 00000000b53359a167e3ab76
+  m_LightCookieSprite: {fileID: 21300000, guid: 459d3604f31db3d4cb53893fd842012f, type: 3}
+  m_UseNormalMap: 1
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 1
+  m_ShadowIntensity: 0.076
+  m_ShadowVolumeIntensity: 0.099
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0.71
+  m_PointLightOuterRadius: 4.1894865
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &5410543338961587372
 GameObject:
   m_ObjectHideFlags: 0
@@ -4922,6 +5014,7 @@ Transform:
   m_Children:
   - {fileID: 378716511}
   - {fileID: 1182043726}
+  - {fileID: 1619171874}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4937,6 +5030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f22c20bfeaa89c418e027d7c44071cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1948900540}
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -4948,7 +5042,7 @@ MonoBehaviour:
   airLinearDrag: 5
   fallMultipier: 10
   lowJumpFallMultiplier: 5
-  groundRaycastLength: 1
+  groundRaycastLength: 1.1
   onGround: 0
   extraJumps: 0
   canWalljump: 0
@@ -4965,14 +5059,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77af2d7bcd4ed8740b989e14f7df8dfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
+  rb: {fileID: 5410543338961587370}
   wallLayer:
     serializedVersion: 2
-    m_Bits: 128
-  wallJumpForce: 20
-  pushAwayForce: 40
+    m_Bits: 384
+  wallJumpForce: 23
+  pushAwayForce: 70
   slideSpeed: 2
-  wallRaycastLength: 0.7
+  wallRaycastLength: 0.48
   isTuchingWall: 0
 --- !u!114 &5410543338961587367
 MonoBehaviour:
@@ -5025,7 +5119,9 @@ MonoBehaviour:
   transitionSpeed: 0.08
   deathParicle: {fileID: 1182043725}
   spriteChild: {fileID: 378716510}
+  spawnpoint: {fileID: 5410543338961587369}
   hasDied: 0
+  rb: {fileID: 5410543338961587370}
 --- !u!50 &5410543338961587370
 Rigidbody2D:
   serializedVersion: 4
@@ -5060,6 +5156,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.024055481, y: -0.16470277}
-  m_Size: {x: 0.51937866, y: 1.3294055}
+  m_Offset: {x: 0.024055481, y: -0.20752597}
+  m_Size: {x: 0.51937866, y: 1.4150519}
   m_Direction: 0

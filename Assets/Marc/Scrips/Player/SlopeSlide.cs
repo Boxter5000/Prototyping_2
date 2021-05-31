@@ -84,8 +84,8 @@ public class SlopeSlide : MonoBehaviour
 
             slopeDownAngleOld = slopeDownAngle;
             
-            Debug.DrawRay(hit.point, slopeNormalPerp, Color.red);
-            Debug.DrawRay(hit.point, hit.normal, Color.green);
+            Debug.DrawRay(hit.point, slopeNormalPerp, Color.yellow);
+            Debug.DrawRay(hit.point, hit.normal, Color.blue);
         }
 
         if (slopeDownAngle > maxSlopeAngle || slopeSideAngle > maxSlopeAngle)

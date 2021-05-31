@@ -23,21 +23,18 @@ public class WallJump : MonoBehaviour
         rb.GetComponent<Rigidbody2D>();
         _playerController = GetComponent<PlayerController>();
     }
-
     private void Update()
     {
         if (_playerController.canWalljump)
         {
-            if (CanWallJump) Jump();
+            //if (CanWallJump) Jump();
             if (isTuchingWall) _playerController.FallMultiplier(slideSpeed);
         }
     }
-
     private void FixedUpdate()
     {
         CheckCollisions();
     }
-
     private void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, 0f);

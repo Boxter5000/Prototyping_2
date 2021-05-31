@@ -572,12 +572,12 @@ MonoBehaviour:
   m_ShapeLightFalloffSize: 1.55
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: 0.25733376, y: -3.0525255, z: 0}
-  - {x: -0.357234, y: -6.642618, z: 0}
-  - {x: 12.383751, y: -6.632003, z: 0}
-  - {x: 8.998272, y: -1.0598583, z: 0}
-  - {x: 0.47633362, y: 18.438038, z: 0}
-  - {x: -8.4805975, y: 15.3854, z: 0}
+  - {x: -7.548649, y: 13.764392, z: 0}
+  - {x: -7.2202125, y: 11.850751, z: 0}
+  - {x: 2.953704, y: 16.524002, z: 0}
+  - {x: 1.4542334, y: 18.271738, z: 0}
+  - {x: -0.33330226, y: 21.47417, z: 0}
+  - {x: -8.8473215, y: 16.223627, z: 0}
 --- !u!1 &4639249347534946530
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,7 +712,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4639249347807039557}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 63.402992, y: -5.0151987, z: 40.170288}
+  m_LocalPosition: {x: 63.402992, y: -5.0151987, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4639249347267621044}
@@ -1035,7 +1035,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4639249348247138332}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.6529922, y: -5.0151987, z: 40.170288}
+  m_LocalPosition: {x: 3.6529922, y: -5.0151987, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4639249346901286007}
@@ -1070,7 +1070,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4639249348289913459}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 31.402992, y: -5.0151987, z: 40.170288}
+  m_LocalPosition: {x: 31.402992, y: -5.0151987, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4639249348765217616}
@@ -1323,7 +1323,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4639249348477372002}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -35.597008, y: -5.0151987, z: 40.170288}
+  m_LocalPosition: {x: -35.597008, y: -5.0151987, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4639249348589621915}
@@ -1402,12 +1402,12 @@ MonoBehaviour:
   m_ShapeLightFalloffSize: 1.55
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: 2.8190918, y: -3.0525255, z: 0}
-  - {x: 2.9635658, y: -5.59894, z: 0}
-  - {x: 16.901943, y: -3.6857815, z: 0}
-  - {x: 14.7687645, y: -1.453301, z: 0}
-  - {x: 5.0520134, y: 21.158108, z: 0}
-  - {x: -9.719757, y: 21.242565, z: 0}
+  - {x: -0.29051208, y: 3.788599, z: 0}
+  - {x: -0.32373047, y: -0.8901129, z: 0}
+  - {x: 14.769646, y: 3.954956, z: 0}
+  - {x: 11.392628, y: 6.2762804, z: 0}
+  - {x: -4.4739, y: 38.677044, z: 0}
+  - {x: -8.734322, y: 22.884964, z: 0}
 --- !u!1 &4639249348548504014
 GameObject:
   m_ObjectHideFlags: 0
@@ -1648,7 +1648,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4639249348681975810}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -69.94701, y: -5.0151987, z: 40.170288}
+  m_LocalPosition: {x: -69.94701, y: -5.0151987, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4639249348971380755}

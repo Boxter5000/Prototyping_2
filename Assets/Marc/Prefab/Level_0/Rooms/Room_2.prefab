@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6214999913257513841}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 111.46418, y: -2.8899472, z: -2.0192816}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -58,10 +58,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.36722898, y: 20.552292}
-      - {x: -89.52089, y: 20.55491}
-      - {x: -89.49368, y: -6.8886833}
-      - {x: -0.27222717, y: -6.827079}
+    - - {x: -0.1, y: 20}
+      - {x: -89.99, y: 20}
+      - {x: -89.99, y: -7}
+      - {x: -0.1, y: -7}
 --- !u!114 &6214999913257513836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 6214999914569202416}
   - component: {fileID: 6214999914569202414}
   - component: {fileID: 6214999914569202417}
+  - component: {fileID: 1364072446}
   m_Layer: 2
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -247,3 +248,15 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 6214999913257513838}
   m_ConfineScreenEdges: 1
   m_Damping: 0
+--- !u!114 &1364072446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6214999914569202419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9fd24c6a271e64ba38d457a06896a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
