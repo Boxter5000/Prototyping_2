@@ -7,6 +7,9 @@ TagManager:
   - RespawnPoint
   - DeathCollider
   - RespawnChild
+  - Ladder
+  - Ground
+  - Rope
   layers:
   - Default
   - TransparentFX
