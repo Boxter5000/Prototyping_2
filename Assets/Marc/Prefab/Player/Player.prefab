@@ -1463,8 +1463,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 0
-    mode: 0
+    enabled: 1
+    mode: 1
     timeMode: 0
     fps: 30
     frameOverTime:
@@ -1582,7 +1582,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 0}
+    - sprite: {fileID: 21300000, guid: 459d3604f31db3d4cb53893fd842012f, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -4860,7 +4860,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5038,7 +5038,7 @@ MonoBehaviour:
   maxMoveSpeed: 7
   groundLinearDrag: 30
   _horizontalDirection: 0
-  jumpForce: 20
+  jumpForce: 23
   airLinearDrag: 5
   fallMultipier: 10
   lowJumpFallMultiplier: 5

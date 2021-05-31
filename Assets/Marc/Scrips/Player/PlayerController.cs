@@ -27,9 +27,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float airLinearDrag = 2.5f;
     [SerializeField] private float fallMultipier = 8f;
     [SerializeField] private float lowJumpFallMultiplier = 5f;
+    [SerializeField] private float groundetDelay = 1f;
+    private bool groundet;
     private int extraJumpsValue;
     private bool isJumping;
-    private bool canJump => Input.GetButtonDown("Jump") && (onGround || extraJumpsValue > 0) && !isJumping;
+    private bool canJump => Input.GetButtonDown("Jump") && (groundet || extraJumpsValue > 0);
     
     
     [Header("Ground Collision Variables")]
@@ -44,6 +46,8 @@ public class PlayerController : MonoBehaviour
     bool isLeft;
     bool isRight;
     Vector3 X;
+
+    private float timer;
 
     private Vector2 NewForce;
     private Vector2 Debugforce;
@@ -69,27 +73,15 @@ public class PlayerController : MonoBehaviour
         
         X = transform.localScale;
         isRight = true;
+        timer = groundetDelay;
     }
     private void Update()
     {
         _horizontalDirection = GetInput().x;
-        FlipCharacter();
         if (canJump) Jump();
         
-        if(!isLeft && (Input.GetKeyDown (KeyCode.A)||Input.GetKeyDown (KeyCode.LeftArrow))){
-            isRight=false;
-            isLeft=true;
-            transform.eulerAngles = new Vector3(0, 180, 0);
-        }
-
-        if (!isRight &&(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)))
-        {
-            isRight = true;
-            isLeft = false;
-            transform.eulerAngles = new Vector3(0, 0, 0);
-        }
-
-        animator.SetFloat("Speed", Mathf.Abs(_horizontalDirection));
+        GroundetDelay();
+        FlipCharacter();
     }
     private void FixedUpdate()
     {
@@ -196,6 +188,13 @@ public class PlayerController : MonoBehaviour
     {
         onGround = Physics2D.Raycast(transform.position , Vector2.down, groundRaycastLength, groundLayer);
 
+        if (onGround)
+        {
+            timer = groundetDelay + Time.time;
+            groundet = true;
+        }
+            
+        
         if (rb.velocity.y <= 0.0f)
         {
             isJumping = false;
@@ -204,14 +203,37 @@ public class PlayerController : MonoBehaviour
 
     private void FlipCharacter()
     {
-        if (horizontalDirection > 0f)
-        {
-            transform.eulerAngles = new Vector3(0, 0, 0); // Normal
+        if(!isLeft && (Input.GetKeyDown (KeyCode.A)||Input.GetKeyDown (KeyCode.LeftArrow))){
+            isRight=false;
+            isLeft=true;
+            transform.eulerAngles = new Vector3(0, 180, 0);
         }
-        else if (horizontalDirection < 0f)
+
+        if (!isRight &&(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)))
         {
-            transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
+            isRight = true;
+            isLeft = false;
+            transform.eulerAngles = new Vector3(0, 0, 0);
         }
+
+        animator.SetFloat("Speed", Mathf.Abs(_horizontalDirection));
+    }
+
+    private void GroundetDelay()
+    {
+        if (!onGround)
+        {
+            if (timer >= 0f)
+            {
+                groundet = true;
+                timer -= Time.time;
+            }
+            else
+            {
+                groundet = false;
+            }
+        }
+
     }
     private void OnDrawGizmos()
     {

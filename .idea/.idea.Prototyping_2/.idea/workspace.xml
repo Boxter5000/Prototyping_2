@@ -37,16 +37,17 @@
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Death.cs" />
       <option value="$PROJECT_DIR$/Assets/levelEnd.cs" />
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/levelEnd.cs" />
-      <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Player/WallJump.cs" />
-      <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Interacting/Interacteble.cs" />
       <option value="$PROJECT_DIR$/Assets/cameraFindPlayer.cs" />
       <option value="$PROJECT_DIR$/Assets/Marc/Sprites/UI/Pause.cs" />
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Player/Death.cs" />
-      <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Player/PlayerController.cs" />
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/SpawnPointSet.cs" />
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Enviroment/Paralax.cs" />
-      <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Player/Dash.cs" />
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/cameraFindPlayer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Player/Dash.cs" />
+      <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Interacting/Interacteble.cs" />
+      <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Player/SlopeSlide.cs" />
+      <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Player/WallJump.cs" />
+      <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Player/PlayerController.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1sfVHgoBauA1D8mc0TwnQ8SC1DI" />
@@ -114,7 +115,9 @@
       <workItem from="1621947266511" duration="8856000" />
       <workItem from="1622036884615" duration="1272000" />
       <workItem from="1622118207114" duration="7351000" />
-      <workItem from="1622203449590" duration="8316000" />
+      <workItem from="1622203449590" duration="8924000" />
+      <workItem from="1622409674665" duration="2451000" />
+      <workItem from="1622464112250" duration="6143000" />
     </task>
     <servers />
   </component>

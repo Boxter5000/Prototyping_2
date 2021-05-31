@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,7 +7,11 @@ public class Interacteble : MonoBehaviour
     [SerializeField] private bool inRange;
     [SerializeField] private KeyCode interactKey;
     [SerializeField] private UnityEvent interactAction;
-    
+    private void Awake()
+    {
+        GameObject.DontDestroyOnLoad(this.gameObject);
+    }
+
     void Update()
     {
         if (inRange)

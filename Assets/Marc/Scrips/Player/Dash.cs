@@ -4,6 +4,7 @@ public class Dash : MonoBehaviour
 {
     private Rigidbody2D rb;
     private PlayerController _playerController;
+    private WallJump _wallJump;
     
     [SerializeField]private float dashSpeed;
     [SerializeField]private float startDashTime;
@@ -18,13 +19,14 @@ public class Dash : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         _playerController = GetComponent<PlayerController>();
+        _wallJump = GetComponent<WallJump>();
         
         dashTime = startDashTime;
     }
 
     private void Update()
     {
-        if (_playerController.canDash)
+        if (_playerController.canDash && !_wallJump.isTuchingWall)
         {
             if (direction == 0)
             {
