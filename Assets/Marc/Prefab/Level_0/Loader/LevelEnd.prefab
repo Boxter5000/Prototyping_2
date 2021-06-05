@@ -280,5 +280,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelToLoad: 1
-  transitionTime: 1
+  transitionTime: 0.5
   transition: {fileID: 2373647071115913296}

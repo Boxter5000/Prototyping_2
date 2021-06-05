@@ -14,7 +14,6 @@ public class Death : MonoBehaviour
     
     [Header("Effeckts")]
     [SerializeField] private GameObject deathParicle;
-    [SerializeField] private GameObject spriteChild;
     [SerializeField] private Transform spawnpoint;
     
     [HideInInspector] public bool hasDied;
@@ -46,24 +45,19 @@ public class Death : MonoBehaviour
         {
             deathPos = transform.position;
 
-            playerClone = Instantiate(spriteChild, lastCheckpoint, quaternion.identity);
-            
             hasDied = true;
             rb.velocity = Vector2.zero;
             cc.isTrigger = true;
             rb.isKinematic = true;
             deathParicle.SetActive(true);
-            spriteChild.SetActive(false);
-            
+
         }
         if (other.gameObject.CompareTag(respawnChild) && hasDied)
         {
-            Destroy(playerClone.gameObject);
             cc.isTrigger = false;
             rb.isKinematic = false;
             hasDied = false;
             deathParicle.SetActive(false);
-            spriteChild.SetActive(true);
         }
     }
     private void FixedUpdate()
