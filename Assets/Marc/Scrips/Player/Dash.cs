@@ -43,7 +43,8 @@ public class Dash : MonoBehaviour
             }
             else
             {
-                if (dashTime <= 0)
+                Debug.Log(rb.velocity);
+                if (dashTime <= 0 || _wallJump.isTuchingWall)
                 {
                     direction = 0;
                     isDashing = false;
@@ -51,7 +52,7 @@ public class Dash : MonoBehaviour
                     dashTime = startDashTime;
                     rb.velocity = Vector2.zero;
                 }
-                else if(canDash)
+                else if(canDash || !_wallJump.isTuchingWall)
                 {
                     dashTime -= Time.deltaTime;
 
@@ -62,14 +63,14 @@ public class Dash : MonoBehaviour
                     else if (direction == 2)
                     {
                         rb.velocity = Vector2.right * dashSpeed;
-                        if (Mathf.Abs(rb.velocity.x) > dashSpeed)
-                        {
-                            rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * dashSpeed, rb.velocity.y);
-                        }
+                    }
+                    if (Mathf.Abs(rb.velocity.x) > dashSpeed)
+                    {
+                        rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * dashSpeed, rb.velocity.y);
                     }
                 }
             }
-            if (_playerController.onGround)
+            if (_playerController.onGround || _wallJump.isTuchingWall)
             {
                 canDash = true;
             }

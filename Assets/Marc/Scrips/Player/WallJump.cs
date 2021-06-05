@@ -12,6 +12,7 @@ public class WallJump : MonoBehaviour
     [SerializeField] private float wallJumpForce = 12f;
     [SerializeField] private float pushAwayForce = 5f;
     [SerializeField] private float slideSpeed = 3f;
+
     private bool CanWallJump => Input.GetButtonDown("Jump") && isTuchingWall;
     
     [Header("Ground Collision Variables")]
@@ -27,9 +28,11 @@ public class WallJump : MonoBehaviour
     {
         if (_playerController.canWalljump)
         {
-            //if (CanWallJump) Jump();
+            
+            if (CanWallJump) Jump();
             if (isTuchingWall) _playerController.FallMultiplier(slideSpeed);
         }
+        
     }
     private void FixedUpdate()
     {
@@ -37,8 +40,16 @@ public class WallJump : MonoBehaviour
     }
     private void Jump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, 0f);
-        rb.AddForce(new Vector2(pushAwayForce * _playerController._horizontalDirection * -1f, 1f) * wallJumpForce, ForceMode2D.Impulse);
+        Debug.Log(_playerController._horizontalDirection);
+        if (_playerController.onGround)
+        {
+            rb.AddForce(new Vector2(pushAwayForce * _playerController._horizontalDirection * -1f, 1f * wallJumpForce / 1.5f));
+        }
+        else
+        {
+            rb.AddForce(new Vector2(pushAwayForce * _playerController._horizontalDirection * -1f, 1f * wallJumpForce));
+        }
+        
     }
     private void CheckCollisions()
     {
