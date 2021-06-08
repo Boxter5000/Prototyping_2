@@ -7,6 +7,8 @@ public class Interacteble : MonoBehaviour
     [SerializeField] private bool inRange;
     [SerializeField] private KeyCode interactKey;
     [SerializeField] private UnityEvent interactAction;
+
+    [SerializeField] private GameObject particle;
     private void Awake()
     {
         GameObject.DontDestroyOnLoad(this.gameObject);
@@ -27,7 +29,7 @@ public class Interacteble : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            transform.Find("InteractParticle").gameObject.SetActive(true);
+            particle.SetActive(true);
             inRange = true;
         }
     }
@@ -36,7 +38,7 @@ public class Interacteble : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            transform.Find("InteractParticle").gameObject.SetActive(false);
+            particle.SetActive(false);
             inRange = false;
         }
     }

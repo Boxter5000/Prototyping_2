@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float fallMultipier = 8f;
     [SerializeField] private float lowJumpFallMultiplier = 5f;
     [SerializeField] private float groundetDelay = 1f;
+    [SerializeField] private float groundetdelay = 0.3f;
     private float _verticalVelocity;
     private bool groundet;
     private int extraJumpsValue;
@@ -77,8 +79,8 @@ public class PlayerController : MonoBehaviour
         _slopeSlide = GetComponent<SlopeSlide>();
         _dash = GetComponent<Dash>();
         _death = GetComponent<Death>();
-        
-        
+
+
         X = transform.localScale;
         isRight = true;
         timer = groundetDelay;
@@ -113,14 +115,20 @@ public class PlayerController : MonoBehaviour
         {
             isDashing = false;
         }
+
+        if (_wallJump.isTuchingWall)
+        {
+            animator.SetTrigger("isTuchingWall");
+        }
         
         animator.SetBool("isFalling", isFalling);
         animator.SetBool("Jumped", jumpAnimationStart);
         animator.SetFloat("JumpVelocity", _verticalVelocity);
         animator.SetBool("isGroundet", Physics2D.Raycast(transform.position , Vector2.down, groundRaycastLength, groundLayer));
-        animator.SetBool("isDashing", isDashing);
-        
-        
+        if (_dash.isDashing)
+        {
+            animator.SetBool("isDashing", isDashing);
+        }
         if (canJump) Jump();
         
         GroundetDelay();
@@ -238,23 +246,25 @@ public class PlayerController : MonoBehaviour
     }
     private void CheckCollisions()
     {
-        onGround = Physics2D.Raycast(transform.position , Vector2.down, groundRaycastLength, groundLayer);
-        
-        
-
+        if (Physics2D.Raycast(transform.position, Vector2.down, groundRaycastLength, groundLayer))
+        {
+            onGround = true;
+        }
+        else
+        {
+            StartCoroutine("groundDelay");
+        }
         if (onGround)
         {
             timer = groundetDelay + Time.time;
             groundet = true;
         }
-            
         
         if (rb.velocity.y <= 0.0f)
         {
             isJumping = false;
         }
     }
-
     private void FlipCharacter()
     {
         if(!isLeft && (Input.GetKeyDown (KeyCode.A)||Input.GetKeyDown (KeyCode.LeftArrow))){
@@ -272,7 +282,6 @@ public class PlayerController : MonoBehaviour
 
         animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
     }
-
     private void GroundetDelay()
     {
         if (!onGround)
@@ -289,6 +298,12 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    IEnumerator groundDelay()
+    {
+        yield return new WaitForSeconds(groundetdelay);
+        onGround = false;
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
@@ -297,18 +312,15 @@ public class PlayerController : MonoBehaviour
         
         Gizmos.DrawLine(pos, pos + (Vector3)Debugforce);
     }
-
     public void SetWalljumpActive()
     {
         canWalljump = true;
     }
-
     public void SetDoubleJumpActive()
     {
         canDoubbleJump = true;
         extraJumps = 1;
     }
-
     public void SetDashActive()
     {
         canDash = true;

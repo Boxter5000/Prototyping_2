@@ -28,15 +28,16 @@ public class WallJump : MonoBehaviour
     {
         if (_playerController.canWalljump)
         {
-            
             if (CanWallJump) Jump();
             if (isTuchingWall) _playerController.FallMultiplier(slideSpeed);
         }
-        
     }
     private void FixedUpdate()
     {
-        CheckCollisions();
+        if (_playerController.canWalljump)
+        {
+            CheckCollisions();
+        }
     }
     private void Jump()
     {

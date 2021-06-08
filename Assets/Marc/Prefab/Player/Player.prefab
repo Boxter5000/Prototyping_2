@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 378716511}
   - component: {fileID: 378716512}
   - component: {fileID: 1948900540}
+  - component: {fileID: 905907881}
+  - component: {fileID: 905907883}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -102,6 +104,120 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!82 &905907881
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378716510}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.42
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &905907883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378716510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eeacabe607fe52459ea05793b2c1320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstep:
+  - {fileID: 8300000, guid: 3ed90935c2e5867488a2fadf8a835a19, type: 3}
+  - {fileID: 8300000, guid: 4d42c2adbdf70834583351d4cd04a0c7, type: 3}
+  - {fileID: 8300000, guid: 702ea9cc00d022647b54948e19dc48df, type: 3}
+  - {fileID: 8300000, guid: 710be04468dba674fa89107e77d4d586, type: 3}
+  - {fileID: 8300000, guid: 58da9acd21d731e4caf84b0159b67f09, type: 3}
 --- !u!1 &1182043725
 GameObject:
   m_ObjectHideFlags: 0
@@ -5046,9 +5162,9 @@ MonoBehaviour:
   groundetDelay: 1
   groundRaycastLength: 1.1
   onGround: 0
-  extraJumps: 1
-  canWalljump: 1
-  canDash: 1
+  extraJumps: 0
+  canWalljump: 0
+  canDash: 0
 --- !u!114 &5410543338961587366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5085,7 +5201,7 @@ MonoBehaviour:
   isOnSlope: 0
   slopeNormalPerp: {x: 0, y: 0}
   slopeCheckDistance: 2
-  maxSlopeAngle: 45
+  maxSlopeAngle: 60
   noFriction: {fileID: 6200000, guid: ccef07347fe02de47805c3e2d913aa7d, type: 2}
   fullFriction: {fileID: 6200000, guid: a913cc52d5e407e49a5cfabc40a2dc84, type: 2}
 --- !u!114 &3606384264019764152
@@ -5173,7 +5289,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dustCloud: {fileID: 8247614197821200502, guid: 28b8301625675d74d8280b5f430aab46, type: 3}
-  timeBetweneEmission: 0.3
 --- !u!1001 &1977878148
 PrefabInstance:
   m_ObjectHideFlags: 0

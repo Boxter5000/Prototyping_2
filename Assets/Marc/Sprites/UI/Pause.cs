@@ -7,6 +7,7 @@ public class Pause : MonoBehaviour
     
     private static PlayerController instance;
     private GameObject pauseMenu;
+    private GameObject[] DestroyOnLoad;
     void Awake()
     {
         pauseMenu = transform.Find("PauseMenu").gameObject;
@@ -16,6 +17,8 @@ public class Pause : MonoBehaviour
             Destroy(this.gameObject);
             return;
         }
+
+        DestroyOnLoad = GameObject.FindGameObjectsWithTag("DestroyOnLoad");
         
         GameObject.DontDestroyOnLoad(this.gameObject);
     }
@@ -39,7 +42,13 @@ public class Pause : MonoBehaviour
 
     public void MainMenu()
     {
+        Destroy(GameObject.FindGameObjectWithTag("Player"));
+        foreach (var obj in DestroyOnLoad)
+        {
+            Destroy(obj);
+        }
         pauseMenu.SetActive(false);
         SceneManager.LoadScene(0);
+        Destroy(gameObject);
     }
 }
