@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private WallJump _wallJump;
     private SlopeSlide _slopeSlide;
     private Dash _dash;
@@ -27,13 +27,13 @@ public class Player : MonoBehaviour
 
 
     [Header("Jump Variables")]
-    [SerializeField] private float jumpForce = 12f;
-    [SerializeField] private float airLinearDrag = 2.5f;
-    [SerializeField] private float fallMultipier = 8f;
-    [SerializeField] private float lowJumpFallMultiplier = 5f;
-    private int extraJumpsValue;
-    private bool isJumping;
-    private bool canJump => Input.GetButtonDown("Jump") && (onGround || extraJumpsValue > 0) && !isJumping;
+    [SerializeField] public float jumpForce = 12f;
+    [SerializeField] public float airLinearDrag = 2.5f;
+    [SerializeField] public float fallMultipier = 8f;
+    [SerializeField] public float lowJumpFallMultiplier = 5f;
+    public int extraJumpsValue;
+    public bool isJumping;
+    public bool canJump => Input.GetButtonDown("Jump") && (onGround || extraJumpsValue > 0) && !isJumping;
 
 
     [Header("Ground Collision Variables")]

@@ -4,31 +4,49 @@ using UnityEngine;
 
 public class RopeSwing : MonoBehaviour
 {
-    public BoxCollider2D[] myColliders;
-    private float timer;
-    public bool isOnRope;
+    public Player _player;
+    public Collider2D[] myColliders;
+    public Collider2D[] myColliderssecond;
+    public float timer;
+    public float timersecond;
     public bool attached = false;
     public Transform attachedtoTransform;
-    private GameObject disregard;
-    private HingeJoint2D hj;
-    public GameObject HingeRope;
-    private Rigidbody2D rb;
+    public HingeJoint2D hj;
+    public Rigidbody2D rb;
     [SerializeField] private float pushforce = 7f;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         hj = GetComponent<HingeJoint2D>();
+        _player = GetComponent<Player>();
     }
 
     private void Update()
     {
-        if (timer > 0f)
+        if(attached)
         {
+            GetComponent<Player>().extraJumpsValue = +1;
+            GetComponent<Player>().isJumping = true;
+        }
+
+        if(timer > 0f && attachedtoTransform == null || GetComponent<Player>().onGround == true && timer > 0f)
+        {
+            
             timer -= Time.deltaTime;
             if (timer <= 0f)
             {
-                foreach (BoxCollider2D bc in myColliders) bc.enabled = true;
+                foreach (Collider2D bc in myColliders) bc.enabled = true;
+            }
+        }
+        
+        if(timersecond > 0f && attachedtoTransform == null || GetComponent<Player>().onGround == true && timersecond > 0f)
+        {
+            
+            timersecond -= Time.deltaTime;
+            if (timersecond <= 0f)
+            {
+                foreach (Collider2D bc in myColliderssecond) bc.enabled = true;
             }
         }
     }
@@ -46,8 +64,8 @@ public class RopeSwing : MonoBehaviour
             {
                 rb.AddRelativeForce(new Vector3(-1, 0, 0) * pushforce);
             }
-        }
-
+        } 
+        
         if (Input.GetKey("d") || Input.GetKey("right"))
         {
             if (attached)
@@ -69,8 +87,8 @@ public class RopeSwing : MonoBehaviour
         hj.enabled = true;
         attached = true;
         attachedtoTransform = ropeBone.gameObject.transform.parent;
-    }
-
+    } 
+    
     void Detach()
     {
         hj.connectedBody.gameObject.GetComponent<RopeSegment>().isPlayerattached = false;
@@ -78,9 +96,8 @@ public class RopeSwing : MonoBehaviour
         hj.enabled = false;
         hj.connectedBody = null;
         attachedtoTransform = null;
-        isOnRope = false;
     }
-
+    
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (!attached)
@@ -89,22 +106,27 @@ public class RopeSwing : MonoBehaviour
             {
                 if (attachedtoTransform != collision.gameObject.transform.parent)
                 {
-                    if (disregard == null || collision.gameObject.transform.parent != disregard)
+                    if (collision.gameObject.transform.parent)
                     {
                         Attach(collision.gameObject.GetComponent<Rigidbody2D>());
-                        isOnRope = true;
+                        foreach (Collider2D bc in myColliders) bc.enabled = false;
+                        timer = 1f;
                     }
                 }
             }
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Rope")
-        {
-            foreach (BoxCollider2D bc in myColliders) bc.enabled = false;
-            timer = 1f;
+            
+            if (collision.gameObject.tag == "Ropesecond")
+            {
+                if (attachedtoTransform != collision.gameObject.transform.parent)
+                {
+                    if (collision.gameObject.transform.parent)
+                    {
+                        Attach(collision.gameObject.GetComponent<Rigidbody2D>());
+                        foreach (Collider2D bc in myColliderssecond) bc.enabled = false;
+                        timersecond = 1f;
+                    }
+                }
+            }
         }
     }
 }
