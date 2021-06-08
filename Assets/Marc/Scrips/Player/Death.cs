@@ -26,12 +26,16 @@ public class Death : MonoBehaviour
     private CapsuleCollider2D cc;
     [SerializeField] private Rigidbody2D rb;
     private SpriteRenderer _spriteRenderer;
+    private ParticleSystem _particleSystem;
 
     private void Awake()
     {
         transform.position = spawnpoint.position;
         cc = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
+        deathParicle = Instantiate(deathParicle, transform);
+        _particleSystem = deathParicle.GetComponent<ParticleSystem>();
+        _particleSystem.Stop();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -49,7 +53,7 @@ public class Death : MonoBehaviour
             rb.velocity = Vector2.zero;
             cc.isTrigger = true;
             rb.isKinematic = true;
-            deathParicle.SetActive(true);
+            _particleSystem.Play();
 
         }
         if (other.gameObject.CompareTag(respawnChild) && hasDied)
@@ -57,7 +61,7 @@ public class Death : MonoBehaviour
             cc.isTrigger = false;
             rb.isKinematic = false;
             hasDied = false;
-            deathParicle.SetActive(false);
+            _particleSystem.Stop();
         }
     }
     private void FixedUpdate()

@@ -211,6 +211,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5410543338961587371, guid: fe94458936954754ca367528bf38d4ac, type: 3}
+      propertyPath: canDash
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5410543338961587371, guid: fe94458936954754ca367528bf38d4ac, type: 3}
+      propertyPath: extraJumps
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5410543338961587371, guid: fe94458936954754ca367528bf38d4ac, type: 3}
+      propertyPath: canWalljump
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5410543338961587371, guid: fe94458936954754ca367528bf38d4ac, type: 3}
+      propertyPath: groundetdelay
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5410543338961587372, guid: fe94458936954754ca367528bf38d4ac, type: 3}
       propertyPath: m_Name
       value: Player

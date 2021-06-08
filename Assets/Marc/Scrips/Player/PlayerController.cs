@@ -222,7 +222,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (Mathf.Abs(_horizontalDirection) <= 0.0f && extraJumpsValue == 0 && canDoubbleJump)
             {
-                rb.AddForce(Vector2.up * (maxMoveSpeed * jumpForce / 8) , ForceMode2D.Impulse);
+                rb.AddForce(Vector2.up * (maxMoveSpeed * jumpForce / 4) , ForceMode2D.Impulse);
             }
             else
             {

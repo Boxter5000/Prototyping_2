@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
+    [SerializeField] private int ScheneToLoad;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(ScheneToLoad);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))

@@ -9,37 +9,35 @@ public class Interacteble : MonoBehaviour
     [SerializeField] private UnityEvent interactAction;
 
     [SerializeField] private GameObject particle;
+    private ParticleSystem _particleSystem;
     private void Awake()
     {
         GameObject.DontDestroyOnLoad(this.gameObject);
+        _particleSystem = particle.GetComponent<ParticleSystem>();
+        particle.SetActive(true);
+        _particleSystem.Stop();
     }
 
     void Update()
     {
-        if (inRange)
+        if (!inRange) return;
+        if(Input.GetKeyDown(interactKey))
         {
-            if(Input.GetKeyDown(interactKey))
-            {
-                interactAction.Invoke();
-            }
+            interactAction.Invoke();
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            particle.SetActive(true);
-            inRange = true;
-        }
+        if (!other.gameObject.CompareTag("Player")) return;
+        _particleSystem.Play();
+        inRange = true;
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            particle.SetActive(false);
-            inRange = false;
-        }
+        if (!other.gameObject.CompareTag("Player")) return;
+        _particleSystem.Stop();
+        inRange = false;
     }
 }

@@ -12,7 +12,9 @@ public class WallJump : MonoBehaviour
     [SerializeField] private float wallJumpForce = 12f;
     [SerializeField] private float pushAwayForce = 5f;
     [SerializeField] private float slideSpeed = 3f;
+    [SerializeField] private float wallDelay = 0.1f;
 
+    private float timer;
     private bool CanWallJump => Input.GetButtonDown("Jump") && isTuchingWall;
     
     [Header("Ground Collision Variables")]
@@ -26,7 +28,7 @@ public class WallJump : MonoBehaviour
     }
     private void Update()
     {
-        if (_playerController.canWalljump)
+        if (_playerController.canWalljump || _playerController.onGround)
         {
             if (CanWallJump) Jump();
             if (isTuchingWall) _playerController.FallMultiplier(slideSpeed);
@@ -34,14 +36,13 @@ public class WallJump : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (_playerController.canWalljump)
+        if (_playerController.canWalljump || _playerController.onGround)
         {
             CheckCollisions();
         }
     }
     private void Jump()
     {
-        Debug.Log(_playerController._horizontalDirection);
         if (_playerController.onGround)
         {
             rb.AddForce(new Vector2(pushAwayForce * _playerController._horizontalDirection * -1f, 1f * wallJumpForce / 1.5f));
@@ -54,7 +55,19 @@ public class WallJump : MonoBehaviour
     }
     private void CheckCollisions()
     {
-        isTuchingWall = Physics2D.Raycast(transform.position , new Vector2(_playerController._horizontalDirection, 0f), wallRaycastLength, wallLayer);
+        if(Physics2D.Raycast(transform.position , new Vector2(_playerController._horizontalDirection, 0f), wallRaycastLength, wallLayer))
+        {
+            isTuchingWall = true;
+        }
+        else
+        {
+            Invoke("notTuchingWall", wallDelay);
+        }
+    }
+
+    private void notTuchingWall()
+    {
+        isTuchingWall = false;
     }
     private void OnDrawGizmos()
     {
