@@ -25,9 +25,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Marc/Sprites/UI/Pause.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Marc/Scrips/LeapeOfFaithCamSwitch.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/AttachGameObjectsToParticles.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/AudioPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Marc/Scrips/SpawnPointSet.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/MenuScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Marc/Scrips/Interacting/Interacteble.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -44,22 +42,19 @@
       <option value="$PROJECT_DIR$/Assets/cameraFindPlayer.cs" />
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Enviroment/Paralax.cs" />
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/cameraFindPlayer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Interacting/Interacteble.cs" />
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Player/SlopeSlide.cs" />
       <option value="$PROJECT_DIR$/Assets/Kevin/scripts/GroundCheck.cs" />
       <option value="$PROJECT_DIR$/Assets/Kevin/scripts/GroundCheckWhileRunning.cs" />
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/LeapeOfFaithCamSwitch.cs" />
+      <option value="$PROJECT_DIR$/Assets/Kevin/scripts/MainMenu.cs" />
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/SpawnPointSet.cs" />
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Player/Death.cs" />
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Player/Dash.cs" />
-      <option value="$PROJECT_DIR$/Assets/Kevin/scripts/Bouncepad.cs" />
-      <option value="$PROJECT_DIR$/Assets/Kevin/scripts/MainMenu.cs" />
-      <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Interacting/StoryPlayer.cs" />
-      <option value="$PROJECT_DIR$/Assets/Marc/Sprites/UI/Pause.cs" />
-      <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Interacting/Interacteble.cs" />
-      <option value="$PROJECT_DIR$/Assets/AudioPlayer.cs" />
-      <option value="$PROJECT_DIR$/Assets/MenuScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Player/WallJump.cs" />
+      <option value="$PROJECT_DIR$/Assets/Kevin/scripts/Bouncepad.cs" />
       <option value="$PROJECT_DIR$/Assets/Marc/Scrips/Player/PlayerController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Marc/Sprites/UI/Pause.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1sfVHgoBauA1D8mc0TwnQ8SC1DI" />
@@ -134,9 +129,6 @@
       <workItem from="1622635912052" duration="6701000" />
       <workItem from="1622762255991" duration="7097000" />
       <workItem from="1622804210336" duration="4816000" />
-      <workItem from="1622935331141" duration="3377000" />
-      <workItem from="1623016653939" duration="1169000" />
-      <workItem from="1623069447370" duration="7193000" />
     </task>
     <servers />
   </component>

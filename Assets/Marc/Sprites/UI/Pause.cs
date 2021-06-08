@@ -19,8 +19,6 @@ public class Pause : MonoBehaviour
         }
 
         DestroyOnLoad = GameObject.FindGameObjectsWithTag("DestroyOnLoad");
-        
-        GameObject.DontDestroyOnLoad(this.gameObject);
     }
 
     private void Update()

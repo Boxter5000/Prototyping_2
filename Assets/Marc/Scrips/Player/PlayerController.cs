@@ -129,6 +129,10 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isDashing", isDashing);
         }
+        else
+        {
+            animator.SetBool("isDashing", false);
+        }
         if (canJump) Jump();
         
         GroundetDelay();
